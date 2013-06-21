@@ -1,0 +1,127 @@
+<?php
+/**
+* Process acts as the parent of a process structure. 
+* A holder for ProcessCases 
+**/
+
+class Process extends DataObject{
+	public static $db = array(
+		'Title'=>'Varchar(255)',
+		'Order'=>'Int'
+	);
+	public static $has_one = array(
+		'DisplayPage'=>'ProcessDisplayPage'
+	);
+	public static $has_many = array(
+		'ProcessStages'=>'ProcessStage',
+		'StopStages'=>'ProcessStopStage',
+		'ProcessCases'=>'ProcessCase'
+	);
+
+	public static $searchable_fields = array(
+		'Title',
+		'DisplayPage.Title'
+	);
+
+	public static $summary_fields = array(
+		'Title'=>'Title of Process',
+		'DisplayPage.Title'=>'Display Page',
+		'NumberOfStages'=>'Number of Stages'
+	);
+
+	public static $default_sort='Order';
+
+	public function getCMSFields(){
+		$fields = parent::getCMSFields();
+		$fields->removeByName('Order');
+
+		$fields->removeByName('Title');
+		$fields->removeByName('DisplayPageID');
+		$fields->removeByName('ProcessStages');
+		$fields->removeByName('StopStages');
+
+
+		if($this->ID > 0){
+			$stops = new GridField(
+					'StopStages', 
+					'Stop Stages', 
+					$this->StopStages(), 
+					GridFieldConfig_RelationEditor::create());
+
+			$stopGroup = new ToggleCompositeField(
+					'StopStages',
+					'Stopping points in this process',
+					array(
+						LiteralField::create('StopDescription', '<p class="message info">Create all stops for this process. You can then link to these stops from within any stages you create.</p>'),
+						$stops
+					)
+			);
+			$stopGroup->setHeadingLevel(5);
+		}else{
+			$stopGroup = LiteralField::create('NoStopDescription', '<p class="message info">Save this process to add stages and stop stages</p>');
+		}
+
+		$fields->addFieldToTab('Root.Main', $processSteps = new CompositeField(
+			$title = new TextField('Title','Title'),
+			$display = new TreeDropDownField('DisplayPageID', 'Display Page', "ProcessDisplayPage"),
+			$stopGroup
+		));
+
+		$title->addExtraClass('process-noborder');
+		$display->addExtraClass('process-noborder');
+		$processSteps->addExtraClass('process-step');
+
+		$fields->insertBefore(new LiteralField('StageTitle', 
+			'<h3 class="process-info-header">
+				<span class="step-label">
+					<span class="flyout">1</span><span class="arrow"></span>
+					<span class="title">Process details</span>
+				</span>
+			</h3>'),'Title');
+
+		
+
+		if($this->ID > 0){
+			$fields->addFieldToTab('Root.Main', $processSteps = new CompositeField(
+				new GridField(
+					'ProcessStages', 
+					'Process Stages', 
+					$this->ProcessStages(), 
+					$processStages = GridFieldConfig_RelationEditor::create())
+			));
+			$processStages->addComponent(new GridFieldSortableRows('Order'));
+			$processSteps->addExtraClass('process-step');
+
+			$fields->insertBefore(new LiteralField('StageTitle', 
+				'<h3 class="process-info-header">
+					<span class="step-label">
+						<span class="flyout">2</span><span class="arrow"></span>
+						<span class="title">Stages of this process</span>
+					</span>
+				</h3>'),'ProcessStages');
+		}
+		
+		
+
+		return $fields;
+	}
+
+	public function NumberOfStages(){
+		if(ProcessStage::get()){
+			return ProcessStage::get()->filter("ParentID", $this->ID)->Count();
+		}else{
+			return "none";
+		}
+	}
+
+	public function NumberOfStagesWithStops(){
+		if(Stage::get()){
+			$stage = ProcessStage::get()->filter("ParentID", $this->ID)->Count();
+			$stop = ProcessStopStage::get()->filter("ParentID", $this->ID)->Count();
+			return $stage + $stop;
+		}else{
+			return 0;
+		}
+	}
+	
+}

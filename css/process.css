@@ -1,0 +1,90 @@
+/***************
+Gridfield fix for early 3.0
+****************/
+.cms table.ss-gridfield-table tbody td{
+  max-width:400px;
+  overflow:hidden;
+  white-space:normal;
+}
+
+
+
+.message.special{
+	background:#E4E6E7;
+	background-color:rgba(0,0,0,0.03);
+	border:1px solid #D6D9DA;
+	border:1px solid rgba(0,0,0,0.07);
+	padding:15px;
+	margin-top:30px;
+}
+
+.message.special h3{
+	margin-top:0;
+}
+
+.decide.message.special, .toggle-grid{
+	margin-bottom: 20px;
+	display:none;
+}
+
+
+
+.message.info{
+	background-color:#D9EDF7;
+	border:1px solid #BCE8F1;
+	color: #3A87AD;
+	padding:10px 20px;
+}
+
+.message.special .field.checkbox{
+	padding-top:7px;
+}
+
+.message.special label.right{
+	padding-bottom:20px;
+	display:block;
+	font-style:italic;
+	font-weight:normal;
+}
+
+.togglecomposite .message.special{
+	margin-top:0;
+	margin-bottom:0;
+}
+
+
+
+h3.process-info-header{
+	border-bottom: 1px solid rgba(201, 205, 206, 0.8);
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	padding: 0 0 7px;
+	clear: both;
+	margin-bottom:20px;
+}
+
+.field.process-noborder{
+	border:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.process-spacing{
+	margin-top:50px;
+}
+
+.process-step{
+	margin-bottom:50px;
+}
+
+#DecisionPoint{
+	padding-left:0;
+	padding-top:7px;
+	border:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
