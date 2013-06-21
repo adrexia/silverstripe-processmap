@@ -1,6 +1,8 @@
 {
 	"name": "adrexia/processmap",
 	"description": "Process map module",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "process", "diagramme"],
 	"require": {
 		"php": ">=5.3.2",
 		"silverstripe/cms": "3.0.*",
