@@ -6,7 +6,7 @@
 
 class ProcessMapAdmin extends ModelAdmin implements PermissionProvider {
 	public static $managed_models = array('Process', 'ProcessCase', 'ProcessInfo');
-	public static $url_segment = 'processflow';
+	public static $url_segment = 'processmap';
 	public static $menu_title = 'Processes';
 	public static $menu_icon = "processmap/images/process.png";
 	

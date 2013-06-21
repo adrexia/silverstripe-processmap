@@ -107,7 +107,9 @@ class Process extends DataObject implements PermissionProvider {
 	}
 
 	public function NumberOfStages(){
+
 		if(ProcessStage::get()){
+
 			return ProcessStage::get()->filter("ParentID", $this->ID)->Count();
 		}else{
 			return "none";
