@@ -3,7 +3,7 @@
 
 **/
 
-class Stage extends DataObject{
+class Stage extends DataObject implements PermissionProvider {
 	public static $db = array(
 		'Title'=>'Varchar(255)',
 		'Content'=>'HTMLText',
@@ -29,6 +29,27 @@ class Stage extends DataObject{
 				'Order'=>'ASC'
 			));
 		return $results;
+	}
+
+	public function providePermissions() {
+		return array(
+			'PROCESS_FLOW_VIEW' => array(
+				'name' => 'View process map admin',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_EDIT' => array(
+				'name' => 'Edit process flows',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_DELETE' => array(
+				'name' => 'Delete from process flows',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_CREATE' => array(
+				'name' => 'Create process maps',
+				'category' => 'Process Maps'
+			)
+		);
 	}
 
 

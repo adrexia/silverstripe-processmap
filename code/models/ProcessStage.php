@@ -3,7 +3,7 @@
 
 **/
 
-class ProcessStage extends Stage{
+class ProcessStage extends Stage implements PermissionProvider {
 	public static $db = array(
 		'ContinueButton'=>'Varchar(255)',
 		'StopButton'=>'Varchar(255)',
@@ -149,6 +149,27 @@ class ProcessStage extends Stage{
 
 	public function PaddedPos($startIndex = 1) { 
 		return sprintf('%02d', $startIndex); 
+	}
+
+	public function providePermissions() {
+		return array(
+			'PROCESS_FLOW_VIEW' => array(
+				'name' => 'View process map admin',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_EDIT' => array(
+				'name' => 'Edit process flows',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_DELETE' => array(
+				'name' => 'Delete from process flows',
+				'category' => 'Process Maps',
+			),
+			'PROCESS_FLOW_CREATE' => array(
+				'name' => 'Create process maps',
+				'category' => 'Process Maps'
+			)
+		);
 	}
 
 

@@ -1,14 +1,14 @@
 <?php
 /*
- * Process Flow Admin provides an interface for the creation of process structures to be 
+ * Process Map Admin provides an interface for the creation of process structures to be 
  * used to create diagrams of processes
  */
 
-class ProcessFlowAdmin extends ModelAdmin implements PermissionProvider {
+class ProcessMapAdmin extends ModelAdmin implements PermissionProvider {
 	public static $managed_models = array('Process', 'ProcessCase', 'ProcessInfo');
 	public static $url_segment = 'processflow';
 	public static $menu_title = 'Processes';
-	public static $menu_icon = "processflow/images/process.png";
+	public static $menu_icon = "processmap/images/process.png";
 	
 
 	public function getEditForm($id = null, $fields = null){
@@ -30,20 +30,20 @@ class ProcessFlowAdmin extends ModelAdmin implements PermissionProvider {
 	public function providePermissions() {
 		return array(
 			'PROCESS_FLOW_VIEW' => array(
-				'name' => 'View process flow admin',
-				'category' => 'Process Flow',
+				'name' => 'View process map admin',
+				'category' => 'Process Maps',
 			),
 			'PROCESS_FLOW_EDIT' => array(
 				'name' => 'Edit process flows',
-				'category' => 'Process Flow',
+				'category' => 'Process Maps',
 			),
 			'PROCESS_FLOW_DELETE' => array(
 				'name' => 'Delete from process flows',
-				'category' => 'Process Flow',
+				'category' => 'Process Maps',
 			),
 			'PROCESS_FLOW_CREATE' => array(
-				'name' => 'Create process flows',
-				'category' => 'Process Flow'
+				'name' => 'Create process maps',
+				'category' => 'Process Maps'
 			)
 		);
 	}
