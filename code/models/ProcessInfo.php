@@ -12,10 +12,10 @@ class ProcessInfo extends DataObject implements PermissionProvider {
 	);
 
 	public static $has_one = array(
-		'Service'=>'ServiceDefinition',
-		'Stage' =>'Stage',
 		'Type'=>'TypeDefinition',
+		'Service'=>'ServiceDefinition',
 		'ProcessCase' =>'ProcessCase',
+		'Stage' =>'Stage',
 	);
 
 	public static $searchable_fields = array(
@@ -50,29 +50,27 @@ class ProcessInfo extends DataObject implements PermissionProvider {
 		$fields->removeByName('Content');
 		$fields->removeByName('ProcessCaseID');
 
-		
-
 		$case = ProcessCase::get();
 		if ($case) {
-			$fields->insertAfter($caseOptions = new DropdownField(
+			$fields->insertBefore($caseOptions = new DropdownField(
 					'ProcessCaseID', 
 					'Case', 
 					$case->map('ID', 'Title')
 
-				),'ServiceID');
+				),'StageID');
 			$caseOptions->setEmptyString('All');
 		}
 
 		$fields->insertAfter(new HiddenField("TypeOrder"), 'TypeID');
 
-		$fields->insertAfter($content = new HTMLEditorField("Content"), 'TypeID');
+		$fields->insertAfter($content = new HTMLEditorField("Content"), 'ProcessCaseID');
 		$content->setRows(15);
 
 		$fields->insertAfter($links = new DropdownField(
 					'LinksToAnotherStageID', 
 					'Links To Another Stage', 
 					Stage::get()->map('ID', 'Title')
-		),'Content');
+		),'StageID');
 
 		$links->setEmptyString(' ');
 
