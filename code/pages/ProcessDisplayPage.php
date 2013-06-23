@@ -1,7 +1,7 @@
 <?php
 class ProcessDisplayPage extends Page {
 	public static $icon = 'processflow/images/process.png';
-	public static $description = 'A page for displaying process flows';
+	public static $description = 'A page for displaying process maps';
 
 
 	public static $db = array(
