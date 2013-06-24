@@ -9,9 +9,7 @@ class Process extends DataObject implements PermissionProvider {
 		'Title'=>'Varchar(255)',
 		'Order'=>'Int'
 	);
-	public static $has_one = array(
-		'DisplayPage'=>'ProcessDisplayPage'
-	);
+
 	public static $has_many = array(
 		'ProcessStages'=>'ProcessStage',
 		'StopStages'=>'ProcessStopStage',
@@ -19,13 +17,11 @@ class Process extends DataObject implements PermissionProvider {
 	);
 
 	public static $searchable_fields = array(
-		'Title',
-		'DisplayPage.Title'
+		'Title'
 	);
 
 	public static $summary_fields = array(
 		'Title'=>'Title of Process',
-		'DisplayPage.Title'=>'Display Page',
 		'NumberOfStages'=>'Number of Stages'
 	);
 
@@ -36,7 +32,6 @@ class Process extends DataObject implements PermissionProvider {
 		$fields->removeByName('Order');
 
 		$fields->removeByName('Title');
-		$fields->removeByName('DisplayPageID');
 		$fields->removeByName('ProcessStages');
 		$fields->removeByName('StopStages');
 
@@ -44,7 +39,7 @@ class Process extends DataObject implements PermissionProvider {
 		if($this->ID > 0){
 			$stops = new GridField(
 					'StopStages', 
-					'Stop Stages', 
+					'Stopping Points', 
 					$this->StopStages(), 
 					GridFieldConfig_RelationEditor::create());
 
@@ -63,12 +58,10 @@ class Process extends DataObject implements PermissionProvider {
 
 		$fields->addFieldToTab('Root.Main', $processSteps = new CompositeField(
 			$title = new TextField('Title','Title'),
-			$display = new TreeDropDownField('DisplayPageID', 'Display Page', "ProcessDisplayPage"),
 			$stopGroup
 		));
 
 		$title->addExtraClass('process-noborder');
-		$display->addExtraClass('process-noborder');
 		$processSteps->addExtraClass('process-step');
 
 		$fields->insertBefore(new LiteralField('StageTitle', 
