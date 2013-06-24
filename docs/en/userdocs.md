@@ -1,6 +1,6 @@
-#User Help
+#Process Map User Help
 ![](_images/initial.png)
-
+_Inital view of process admin_
 
 ##Terminology
 * Case: A case is a means of classifying information in order to filter that info to different audiences. In the default template case filtering assumes the first step is chosing a case. 
@@ -16,13 +16,13 @@
 If you are using this with the Definitions module, first add your service and type definitions. Services are a way a providing agency -> url pairings. Types are a simplier classificarion, that could be used to style process info differently on the frontend
 
 Examples of services:
-	* Police http://nzpolice.govt.nz
-	* ACC http://www.acc.co.nz
+* Police http://nzpolice.govt.nz
+* ACC http://www.acc.co.nz
 
 Examples of type definitions:
-	* Note
-	* Announcement
-	* Communication
+* Note
+* Announcement
+* Communication
 
 Then go to "Processes" in the left hand navigation and add Process Cases. Once you have set up an initial process, you can then connect these process cases to that process.
 
@@ -47,16 +47,16 @@ Once you have an initial process, you may add stages. Stages may act as decision
 ![](_images/add_general_stage.png)
 
 Notes: 
-	* "Parent" will be set automatically when you save a record from within a process, so there is no need to set this each time.
-	* "Content" is optional and applies to all cases that can see this step.
-	* A slide will only act as a decision point when a stop slide is selected and will continue to act as a decision point until that stop is removed. You must select the act as Decision Point checkbox in order to display the area that lets you add and remove stop stages.
-	* Stop slides are for resolving decision points, and "Final step for these cases" only needs to be set if other cases continue on after this slide (i.e. there is no need to do anything special if this is the final slide for all steps)
+* "Parent" will be set automatically when you save a record from within a process, so there is no need to set this each time.
+* "Content" is optional and applies to all cases that can see this step.
+* A slide will only act as a decision point when a stop slide is selected and will continue to act as a decision point until that stop is removed. You must select the act as Decision Point checkbox in order to display the area that lets you add and remove stop stages.
+* Stop slides are for resolving decision points, and "Final step for these cases" only needs to be set if other cases continue on after this slide (i.e. there is no need to do anything special if this is the final slide for all steps)
 
 
 
 ##How can I make a case finish before other cases?
 Each stage lets you define any cases you want to end early. Choose the relivent cases from the "Final step for these Cases" dropdown. This stage be the last see by users viewing these cases, so provide any special info you want them to have before leaving the process.
-	* Note: there is no need to select cases on a slide if it is the final slide for all cases.
+* Note: there is no need to select cases on a slide if it is the final slide for all cases.
 
 ##Adding information pieces
 ![](_images/add_info.png)
@@ -68,7 +68,7 @@ If you would like your information to inherit its title from a service definitio
 "Links to another stage" refers to another visible stage in the current process. You only need to set this if you ould like your information piece to act as an internal link to another section of the processmap (you might do this if you want to reference a section that the user has already viewed).
 
 Notes: 
-	* The Type and Services fields are defined in the Definitions admin and will not appear if you are not using the definitions admin, or have no definitions defined.
+* The Type and Services fields are defined in the Definitions admin and will not appear if you are not using the definitions admin, or have no definitions defined.
 
 ##Adding a Process Display Page
 Once you have the basis of a process set up, you can set up a process display page. This is a generic page, with the additional feature of chosing a process to display. You may enter content here as you normally would, but it could be a good idea to keep it short.
