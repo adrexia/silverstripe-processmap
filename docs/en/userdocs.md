@@ -1,19 +1,23 @@
-#Process Map User Help
+#Using the Process Map Module
 ![](_images/initial.png)
-_Inital view of process admin_
+_Initial view of the processes admin_
 
 ##Terminology
-* Case: A case is a means of classifying information in order to filter that info to different audiences. In the default template case filtering assumes the first step is chosing a case. 
-* Stage: A stage respresents a single step in a process. The first step in the default template is case selection. Everything after that is user defined.
-* Decision point: A decision point is anywhere in your process that you want users to make a choice. These choicdes currently result in either continuation of the flow (ie the next stage), or a stop stage. You may choice for any regular stage you add to act as a decision point, rather then an information step.
-* Stop Stage: A stop stage is a stopping point in your process. These can be linked with decision point slides to provide final information after a user has selected a stop option
-* Process Info/Information: Each piece of information that appears in a process map can be classified with meta data. This means that they can easily be filtered and categorized on the frontend.
-* Process Display Page: The page type that lets you view your process on your website
-* Process Admin: The modeladmin where you define your process
+* **Case:** A case is a means of classifying information in order to filter that info to different audiences. In the default template case filtering assumes the first step is chosing a case. 
+* **Stage:** A stage respresents a single step in a process. The first step in the default template is case selection. Everything after that is user defined.
+* **Decision point:** A decision point is anywhere in your process that you want users to make a choice. These choicdes currently result in either continuation of the flow (ie the next stage), or a stop stage. You may choice for any regular stage you add to act as a decision point, rather then an information step.
+* **Stop Stage:** A stop stage is a stopping point in your process. These can be linked with decision point slides to provide final information after a user has selected a stop option
+* **Process Info/Information:** Each piece of information that appears in a process map can be classified with meta data. This means that they can easily be filtered and categorized on the frontend.
+* **Process Display Page:** The page type that lets you view your process on your website
+* **Process Admin:** The modeladmin where you define your process
 
 
-##Set up meta data
-If you are using this with the Definitions module, first add your service and type definitions. Services are a way a providing agency -> url pairings. Types are a simplier classificarion, that could be used to style process info differently on the frontend
+##Setting up meta data
+If you are using this with the Definitions module, first add your service and type definitions. 
+Services are a way a providing 
+    agency -> url pairings 
+    
+Types are a simplier sort of classification, that could be used to style process info differently on the frontend
 
 Examples of services:
 * Police http://nzpolice.govt.nz
@@ -53,8 +57,7 @@ Notes:
 * Stop slides are for resolving decision points, and "Final step for these cases" only needs to be set if other cases continue on after this slide (i.e. there is no need to do anything special if this is the final slide for all steps)
 
 
-
-##How can I make a case finish before other cases?
+###How can I make a case finish before other cases?
 Each stage lets you define any cases you want to end early. Choose the relivent cases from the "Final step for these Cases" dropdown. This stage be the last see by users viewing these cases, so provide any special info you want them to have before leaving the process.
 * Note: there is no need to select cases on a slide if it is the final slide for all cases.
 
