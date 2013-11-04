@@ -4,6 +4,7 @@
 	<% else_if $Service.Link %>
 		<a href="$Service.Link" class="outer-link" target="_blank"></a>
 	<% end_if %>
+	<% if $Number %><div class="num"> $Number</div><% end_if %>
 	<% if $Title %>
 		<h4 <% if Content %>class="has-content"<% end_if %>>$Title</h4>
 	<% else_if $Service %>

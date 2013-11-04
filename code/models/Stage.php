@@ -24,6 +24,7 @@ class Stage extends DataObject implements PermissionProvider {
 		$results = ProcessInfo::get()
 			->filter('StageID', $this->ID)
 			->sort(array(
+				'Number'=>'ASC',
 				'LinksToAnotherStageID'=>'ASC',
 				'ProcessCaseID'=>'ASC',
 				'Order'=>'ASC'

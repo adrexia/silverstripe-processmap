@@ -6,6 +6,7 @@
 class ProcessInfo extends DataObject implements PermissionProvider {
 	public static $db = array(
 		'Title'=>'Varchar(255)',
+		'Number'=>'Int',
 		'Content' => 'HTMLText',
 		'Order'=>'Int',
 		'LinksToAnotherStageID'=>'Int'
@@ -28,6 +29,7 @@ class ProcessInfo extends DataObject implements PermissionProvider {
 	);
 
 	public static $summary_fields = array(
+		'Number'=>'Number',
 		'Service.Name'=>'Service',
 		'Title'=>'Title',
 		'ShortContent'=>'Content',
@@ -38,10 +40,7 @@ class ProcessInfo extends DataObject implements PermissionProvider {
 	);
 
 
-	public static $default_sort = "Order, ProcessCaseID, LinksToAnotherStageID DESC";
-
-
-
+	public static $default_sort = "Number, Order, ProcessCaseID, LinksToAnotherStageID DESC";
 
 	public function getCMSFields(){
 		$fields = parent::getCMSFields();
