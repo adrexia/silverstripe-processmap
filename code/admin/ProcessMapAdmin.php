@@ -12,6 +12,9 @@ class ProcessMapAdmin extends ModelAdmin implements PermissionProvider {
 	
 
 	public function getEditForm($id = null, $fields = null){
+		// Fix CMS regression that filters data by live status
+		Versioned::reading_stage('Stage');
+
 		$form = parent::getEditForm($id, $fields);
 		
 		$gridField = $form->Fields()->fieldByName(
